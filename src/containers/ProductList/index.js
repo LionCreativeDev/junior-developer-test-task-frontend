@@ -33,11 +33,11 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="JVC2001231" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">JVC200123</p>
+                    <p className="card-text mb-0">JVC2001231</p>
                     <p className="card-text mb-0">Acme DISC</p>
                     <p className="card-text mb-0">1.00 $</p>
                     <p className="card-text mb-0">Size: 700 MB</p>
@@ -51,13 +51,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="JVC2001232" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">JVC200123</p>
+                    <p className="card-text mb-0">JVC2001232</p>
                     <p className="card-text mb-0">Acme DISC</p>
-                    <p className="card-text mb-0">1.00 $</p>
+                    <p className="card-text mb-0">1.20 $</p>
                     <p className="card-text mb-0">Size: 700 MB</p>
                   </div>
                 </div>
@@ -69,13 +69,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="JVC20012333" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">JVC200123</p>
+                    <p className="card-text mb-0">JVC20012333</p>
                     <p className="card-text mb-0">Acme DISC</p>
-                    <p className="card-text mb-0">1.00 $</p>
+                    <p className="card-text mb-0">1.30 $</p>
                     <p className="card-text mb-0">Size: 700 MB</p>
                   </div>
                 </div>
@@ -87,13 +87,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="JVC2001234" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">JVC200123</p>
+                    <p className="card-text mb-0">JVC2001234</p>
                     <p className="card-text mb-0">Acme DISC</p>
-                    <p className="card-text mb-0">1.00 $</p>
+                    <p className="card-text mb-0">1.40 $</p>
                     <p className="card-text mb-0">Size: 700 MB</p>
                   </div>
                 </div>
@@ -105,11 +105,11 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="GGWP00071" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">GGWP0007</p>
+                    <p className="card-text mb-0">GGWP00071</p>
                     <p className="card-text mb-0">War and Peace</p>
                     <p className="card-text mb-0">20.00 $</p>
                     <p className="card-text mb-0">Weight: 2KGB</p>
@@ -123,13 +123,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="GGWP00072" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">GGWP0007</p>
+                    <p className="card-text mb-0">GGWP00072</p>
                     <p className="card-text mb-0">War and Peace</p>
-                    <p className="card-text mb-0">20.00 $</p>
+                    <p className="card-text mb-0">22.00 $</p>
                     <p className="card-text mb-0">Weight: 2KGB</p>
                   </div>
                 </div>
@@ -141,13 +141,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="GGWP00073" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">GGWP0007</p>
+                    <p className="card-text mb-0">GGWP00073</p>
                     <p className="card-text mb-0">War and Peace</p>
-                    <p className="card-text mb-0">20.00 $</p>
+                    <p className="card-text mb-0">23.00 $</p>
                     <p className="card-text mb-0">Weight: 2KGB</p>
                   </div>
                 </div>
@@ -159,13 +159,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="GGWP00074" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">GGWP0007</p>
+                    <p className="card-text mb-0">GGWP00074</p>
                     <p className="card-text mb-0">War and Peace</p>
-                    <p className="card-text mb-0">20.00 $</p>
+                    <p className="card-text mb-0">24.00 $</p>
                     <p className="card-text mb-0">Weight: 2KGB</p>
                   </div>
                 </div>
@@ -177,13 +177,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="TR120551" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">TR120555</p>
+                    <p className="card-text mb-0">TR120551</p>
                     <p className="card-text mb-0">Chair</p>
-                    <p className="card-text mb-0">40.00 $</p>
+                    <p className="card-text mb-0">10.00 $</p>
                     <p className="card-text mb-0">Dimension: 24x45x15</p>
                   </div>
                 </div>
@@ -195,13 +195,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="TR120552" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">TR120555</p>
+                    <p className="card-text mb-0">TR120552</p>
                     <p className="card-text mb-0">Chair</p>
-                    <p className="card-text mb-0">40.00 $</p>
+                    <p className="card-text mb-0">20.00 $</p>
                     <p className="card-text mb-0">Dimension: 24x45x15</p>
                   </div>
                 </div>
@@ -213,13 +213,13 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="TR120553" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">TR120555</p>
+                    <p className="card-text mb-0">TR120553</p>
                     <p className="card-text mb-0">Chair</p>
-                    <p className="card-text mb-0">40.00 $</p>
+                    <p className="card-text mb-0">30.00 $</p>
                     <p className="card-text mb-0">Dimension: 24x45x15</p>
                   </div>
                 </div>
@@ -231,11 +231,11 @@ function ProductList() {
             <div className="card mb-3">
               <div className="row g-0">
                 <div className="col-md-2">
-                  <input className="form-check-input m-4" type="checkbox" id="check1" name="option1" value="something" />
+                  <input className="form-check-input m-4 delete-checkbox" type="checkbox" value="TR120554" />
                 </div>
                 <div className="col-md-10">
                   <div className="card-body text-center">
-                    <p className="card-text mb-0">TR120555</p>
+                    <p className="card-text mb-0">TR120554</p>
                     <p className="card-text mb-0">Chair</p>
                     <p className="card-text mb-0">40.00 $</p>
                     <p className="card-text mb-0">Dimension: 24x45x15</p>
