@@ -103,7 +103,7 @@ const products = [
     price: "40.00",
     productType: "Furniture",
     productTypeValue: "24x45x15",
-  },
+  }  
 ];
 
 const solveProductTypeValue = (productType, productTypeValue) => {
@@ -142,7 +142,7 @@ const ProductList = () => {
       {/* <Header/>
       <Content/> */}
 
-      <div className="container mt-5" style={{ borderBottom: "1px solid black" }}>
+      <div className="mt-5" style={{ borderBottom: "1px solid black", height: 45, flexShrink: 0 }}>
         <div className="d-flex justify-content-between align-items-center">
           <div>
             <h3 className="muted mb-0">Product List</h3>
@@ -154,7 +154,7 @@ const ProductList = () => {
         </div>
       </div>
 
-      <div className="container mt-5">
+      <div className="mt-5" style={{flex: "1 0 auto"}}>
         <div className="row">
           {products.map(({ id, sku, name, price, productType, productTypeValue }, index) =>
             <div className="col-sm-6 col-md-3" key={id}>

@@ -14,7 +14,7 @@ function App() {
   return (
     // <div className="App">
       <Router>
-        <div className="container">
+        <div className="container" style={{display: "flex", flexDirection: "column", height: "100vh"}}>
           <Routes>
               <Route path="/" element={<ProductList />} />
               <Route path="/addproduct" element={<AddProduct />} />

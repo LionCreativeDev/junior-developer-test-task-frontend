@@ -76,7 +76,7 @@ const AddProduct = () => {
 
     return (
         <>
-            <div className="container mt-5" style={{ borderBottom: "1px solid black" }}>
+            <div className="mt-5" style={{ borderBottom: "1px solid black", height: 45, flexShrink: 0 }}>
                 <div className="d-flex justify-content-between align-items-center">
                     <div>
                         <h3 className="muted mb-0">Product Add</h3>
@@ -89,7 +89,7 @@ const AddProduct = () => {
                 </div>
             </div>
 
-            <div className="container mt-5">
+            <div className="mt-5" style={{flex: "1 0 auto"}}>
                 <div className="col-sm-12 col-md-6">
 
                     {(invalidFields.length > 0 && invalidFields.includes('main')) && (
