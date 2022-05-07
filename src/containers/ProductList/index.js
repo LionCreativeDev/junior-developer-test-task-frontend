@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 // import Header from './components/header.js';
 // import Content from './components/content.js';
@@ -7,104 +8,104 @@ import Footer from '../Footer/footer';
 
 import { useNavigate } from "react-router-dom";
 
-const products = [
-  {
-    id: 1,
-    sku: "JVC2001231",
-    name: "Acme DISC",
-    price: "1.00",
-    productType: "DVD",
-    productTypeValue: "700",
-  },
-  {
-    id: 2,
-    sku: "JVC2001232",
-    name: "Acme DISC",
-    price: "1.20",
-    productType: "DVD",
-    productTypeValue: "700",
-  },
-  {
-    id: 3,
-    sku: "JVC20012333",
-    name: "Acme DISC",
-    price: "1.30",
-    productType: "DVD",
-    productTypeValue: "700",
-  },
-  {
-    id: 4,
-    sku: "JVC2001234",
-    name: "Acme DISC",
-    price: "1.40",
-    productType: "DVD",
-    productTypeValue: "700",
-  },
-  {
-    id: 5,
-    sku: "GGWP00071",
-    name: "War and Peace 1",
-    price: "20.00",
-    productType: "Book",
-    productTypeValue: "2",
-  },
-  {
-    id: 6,
-    sku: "GGWP00072",
-    name: "War and Peace 2",
-    price: "21.00",
-    productType: "Book",
-    productTypeValue: "2",
-  },
-  {
-    id: 7,
-    sku: "GGWP00073",
-    name: "War and Peace 3",
-    price: "22.00",
-    productType: "Book",
-    productTypeValue: "2",
-  },
-  {
-    id: 8,
-    sku: "GGWP00074",
-    name: "War and Peace 4",
-    price: "23.00",
-    productType: "Book",
-    productTypeValue: "2",
-  },
-  {
-    id: 9,
-    sku: "TR120551",
-    name: "Chair 1",
-    price: "10.00",
-    productType: "Furniture",
-    productTypeValue: "24x45x15",
-  },
-  {
-    id: 10,
-    sku: "TR120552",
-    name: "Chair 2",
-    price: "20.00",
-    productType: "Furniture",
-    productTypeValue: "24x45x15",
-  },
-  {
-    id: 11,
-    sku: "TR120553",
-    name: "Chair 3",
-    price: "30.00",
-    productType: "Furniture",
-    productTypeValue: "24x45x15",
-  },
-  {
-    id: 12,
-    sku: "TR120554",
-    name: "Chair 4",
-    price: "40.00",
-    productType: "Furniture",
-    productTypeValue: "24x45x15",
-  }  
-];
+// const products = [
+//   {
+//     id: 1,
+//     sku: "JVC2001231",
+//     name: "Acme DISC",
+//     price: "1.00",
+//     productType: "DVD",
+//     productTypeValue: "700",
+//   },
+//   {
+//     id: 2,
+//     sku: "JVC2001232",
+//     name: "Acme DISC",
+//     price: "1.20",
+//     productType: "DVD",
+//     productTypeValue: "700",
+//   },
+//   {
+//     id: 3,
+//     sku: "JVC20012333",
+//     name: "Acme DISC",
+//     price: "1.30",
+//     productType: "DVD",
+//     productTypeValue: "700",
+//   },
+//   {
+//     id: 4,
+//     sku: "JVC2001234",
+//     name: "Acme DISC",
+//     price: "1.40",
+//     productType: "DVD",
+//     productTypeValue: "700",
+//   },
+//   {
+//     id: 5,
+//     sku: "GGWP00071",
+//     name: "War and Peace 1",
+//     price: "20.00",
+//     productType: "Book",
+//     productTypeValue: "2",
+//   },
+//   {
+//     id: 6,
+//     sku: "GGWP00072",
+//     name: "War and Peace 2",
+//     price: "21.00",
+//     productType: "Book",
+//     productTypeValue: "2",
+//   },
+//   {
+//     id: 7,
+//     sku: "GGWP00073",
+//     name: "War and Peace 3",
+//     price: "22.00",
+//     productType: "Book",
+//     productTypeValue: "2",
+//   },
+//   {
+//     id: 8,
+//     sku: "GGWP00074",
+//     name: "War and Peace 4",
+//     price: "23.00",
+//     productType: "Book",
+//     productTypeValue: "2",
+//   },
+//   {
+//     id: 9,
+//     sku: "TR120551",
+//     name: "Chair 1",
+//     price: "10.00",
+//     productType: "Furniture",
+//     productTypeValue: "24x45x15",
+//   },
+//   {
+//     id: 10,
+//     sku: "TR120552",
+//     name: "Chair 2",
+//     price: "20.00",
+//     productType: "Furniture",
+//     productTypeValue: "24x45x15",
+//   },
+//   {
+//     id: 11,
+//     sku: "TR120553",
+//     name: "Chair 3",
+//     price: "30.00",
+//     productType: "Furniture",
+//     productTypeValue: "24x45x15",
+//   },
+//   {
+//     id: 12,
+//     sku: "TR120554",
+//     name: "Chair 4",
+//     price: "40.00",
+//     productType: "Furniture",
+//     productTypeValue: "24x45x15",
+//   }  
+// ];
 
 const solveProductTypeValue = (productType, productTypeValue) => {
   if (productType === "DVD") {
@@ -120,6 +121,13 @@ const solveProductTypeValue = (productType, productTypeValue) => {
 
 const ProductList = () => {
   let navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API}/list`).then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
 
   const [checkedState, setCheckedState] = useState(new Array(products.length).fill(false));
 
