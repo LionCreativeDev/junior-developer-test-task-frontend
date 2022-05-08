@@ -122,6 +122,10 @@ const solveProductTypeValue = (productType, productTypeValue) => {
 const ProductList = () => {
   let navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [checkedState, setCheckedState] = useState([]);
+
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API}/list`).then((response) => {
@@ -129,7 +133,13 @@ const ProductList = () => {
     });
   }, []);
 
-  const [checkedState, setCheckedState] = useState(new Array(products.length).fill(false));
+  useEffect(() => {
+    setCheckedState(new Array(products.length).fill(false));
+  }, [products]);
+
+  // useEffect(() => {
+  //   console.log("checkedState", checkedState);
+  // }, [checkedState]);
 
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) => index === position ? !item : item);
@@ -139,10 +149,58 @@ const ProductList = () => {
   const massDelete = () => {
     //console.log(checkedState);
     const indices = checkedState.reduce(
-      (out, bool, index) => bool ? out.concat(products[index].id) : out, 
+      (out, bool, index) => bool ? out.concat(products[index].id) : out,
       []
     )
-    console.log(indices)
+    //console.log(indices);
+    //console.log(indices.reverse());    
+
+    var temp = products;
+    indices.forEach(currentindex => {
+      var index = temp.findIndex(function (o) {
+        return o.id === currentindex;
+      })
+
+      if (index !== -1)
+        temp.splice(index, 1);
+    });
+    //console.log(temp);
+    setProducts(temp);
+    //console.log("products", products);
+    forceUpdate();
+    setCheckedState(new Array(products.length).fill(false));
+
+    // indices.map((currentindex) => {
+    //   //console.log("currentindex", currentindex);
+    //   var index = products.findIndex(function(o){
+    //     return o.id === currentindex;
+    //   })
+
+    //   if (index !== -1) 
+    //     products.splice(index, 1);
+    // })
+
+    axios.get(`${process.env.REACT_APP_API}/delete?id=${indices}`).then((response) => {
+      //console.log(indices);
+      //console.log(indices.reverse());    
+
+      var temp = products;
+      indices.forEach(currentindex => {
+        var index = temp.findIndex(function (o) {
+          return o.id === currentindex;
+        })
+
+        if (index !== -1)
+          temp.splice(index, 1);
+      });
+      //console.log(temp);
+      setProducts(temp);
+      //console.log("products", products);
+      forceUpdate();
+      setCheckedState(new Array(products.length).fill(false));
+
+      console.log('Delete Response', response.data);
+    });
   };
 
   return (
@@ -162,14 +220,14 @@ const ProductList = () => {
         </div>
       </div>
 
-      <div className="mt-5" style={{flex: "1 0 auto"}}>
+      <div className="mt-5" style={{ flex: "1 0 auto" }}>
         <div className="row">
-          {products.map(({ id, sku, name, price, productType, productTypeValue }, index) =>
+          {products.length > 0 ? products.map(({ id, sku, name, price, productType, productTypeValue }, index) =>
             <div className="col-sm-6 col-md-3" key={id}>
               <div className="card mb-3">
                 <div className="row g-0">
                   <div className="col-md-2">
-                    <input className="form-check-input m-4 delete-checkbox" type="checkbox" id={`custom-checkbox-${index}`} value={sku} checked={checkedState[index]} onChange={() => handleOnChange(index)} />
+                    <input className="form-check-input m-4 delete-checkbox" type="checkbox" id={`custom-checkbox-${index}`} value={sku} checked={checkedState[index] || false} onChange={() => handleOnChange(index)} />
                   </div>
                   <div className="col-md-10">
                     <div className="card-body text-center">
@@ -182,7 +240,7 @@ const ProductList = () => {
                 </div>
               </div>
             </div>
-          )}
+          ) : ''}
 
           {/* <div className="col-sm-6 col-md-3">
             <div className="card mb-3">
