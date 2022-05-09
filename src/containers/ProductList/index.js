@@ -199,7 +199,10 @@ const ProductList = () => {
       forceUpdate();
       setCheckedState(new Array(products.length).fill(false));
 
-      console.log('Delete Response', response.data);
+      if (response.data.success === "true")
+        console.log('Delete Response: ', response.data.message);
+      else
+        console.log('Record Not Deleted', response.data.message);
     });
   };
 
