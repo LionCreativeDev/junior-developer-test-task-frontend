@@ -76,21 +76,18 @@ const AddProduct = () => {
 
         if (invalidFields.length === 0) {
             let productTypeValue = '';
-            if (productType === "book"){
-                console.log("size", size);
-                productTypeValue = size;
-            }
-            else if (productType === "dvd"){
-                console.log("weight", weight);
+            if (productType === "book")
                 productTypeValue = weight;
-            }
-            else if (productType === "furniture"){
-                console.log("furniture", height + "x" + width + "x" + length);
+            else if (productType === "dvd")
+                productTypeValue = size;
+            else if (productType === "furniture")
                 productTypeValue = height + "x" + width + "x" + length;
-            }
 
             axios.get(`${process.env.REACT_APP_API}/add?sku=${sku}&name=${name}&price=${price}&productType=${productType}&productTypeValue=${productTypeValue}`).then((response) => {
-                console.log(response.data);
+                if (response.data.success === "true") {
+                    //console.log(response.data);
+                    navigate(-1);
+                }
             });
         }
     }
@@ -110,7 +107,7 @@ const AddProduct = () => {
                 </div>
             </div>
 
-            <div className="mt-5" style={{flex: "1 0 auto"}}>
+            <div className="mt-5" style={{ flex: "1 0 auto" }}>
                 <div className="col-sm-12 col-md-6">
 
                     {(invalidFields.length > 0 && invalidFields.includes('main')) && (
@@ -166,65 +163,65 @@ const AddProduct = () => {
                             </div>
                         </div>
 
-                        {productType === "book" && (
-                            <div className="option-book">
-                                <div className="mb-2 row">
-                                    <label htmlFor="weight" className="col-sm-4 col-form-label">Weight (KG)</label>
-                                    <div className="col-sm-8">
-                                        <input type="number" className="form-control" id="weight" placeholder="Please provide book weight!" onChange={(e) => setWeight(e.target.value)} />
-                                        {(invalidFields.length > 0 && invalidFields.includes('weight')) && (
-                                            <div id="reqWeight" className="form-text">Please provide weight</div>
-                                        )}
-                                    </div>
+                        {/* {productType === "book" && ( */}
+                        <div className={`option-book ${productType === "book" ? "show" : "hide"}`}>
+                            <div className="mb-2 row">
+                                <label htmlFor="weight" className="col-sm-4 col-form-label">Weight (KG)</label>
+                                <div className="col-sm-8">
+                                    <input type="number" className="form-control" id="weight" placeholder="Please provide book weight!" onChange={(e) => setWeight(e.target.value)} />
+                                    {(invalidFields.length > 0 && invalidFields.includes('weight')) && (
+                                        <div id="reqWeight" className="form-text">Please provide weight</div>
+                                    )}
                                 </div>
                             </div>
-                        )}
+                        </div>
+                        {/* )} */}
 
-                        {productType === "dvd" && (
-                            <div className="option-dvd">
-                                <div className="mb-2 row">
-                                    <label htmlFor="size" className="col-sm-4 col-form-label">Size (MB)</label>
-                                    <div className="col-sm-8">
-                                        <input type="number" className="form-control" id="size" placeholder="Please provide div size!" onChange={(e) => setSize(e.target.value)} />
-                                        {(invalidFields.length > 0 && invalidFields.includes('size')) && (
-                                            <div id="reqSize" className="form-text">Please provide size</div>
-                                        )}
-                                    </div>
+                        {/* {productType === "dvd" && ( */}
+                        <div className={`option-dvd ${productType === "dvd" ? "show" : "hide"}`}>
+                            <div className="mb-2 row">
+                                <label htmlFor="size" className="col-sm-4 col-form-label">Size (MB)</label>
+                                <div className="col-sm-8">
+                                    <input type="number" className="form-control" id="size" placeholder="Please provide div size!" onChange={(e) => setSize(e.target.value)} />
+                                    {(invalidFields.length > 0 && invalidFields.includes('size')) && (
+                                        <div id="reqSize" className="form-text">Please provide size</div>
+                                    )}
                                 </div>
                             </div>
-                        )}
+                        </div>
+                        {/* )} */}
 
-                        {productType === "furniture" && (
-                            <div className="option-furniture">
-                                <div className="mb-2 row">
-                                    <label htmlFor="height" className="col-sm-4 col-form-label">Height (CM)</label>
-                                    <div className="col-sm-8">
-                                        <input type="number" className="form-control" id="height" placeholder="Please provide furniture height" onChange={(e) => setHeight(e.target.value)} />
-                                        {(invalidFields.length > 0 && invalidFields.includes('height')) && (
-                                            <div id="reqHeight" className="form-text">Please provide height</div>
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="mb-2 row">
-                                    <label htmlFor="width" className="col-sm-4 col-form-label">Width (CM)</label>
-                                    <div className="col-sm-8">
-                                        <input type="text" className="form-control" id="width" placeholder="Please provide furniture width" onChange={(e) => setWidth(e.target.value)} />
-                                        {(invalidFields.length > 0 && invalidFields.includes('width')) && (
-                                            <div id="reqWidth" className="form-text">Please provide width</div>
-                                        )}
-                                    </div>
-                                </div>
-                                <div className="mb-2 row">
-                                    <label htmlFor="length" className="col-sm-4 col-form-label">Length (CM)</label>
-                                    <div className="col-sm-8">
-                                        <input type="number" className="form-control" id="length" placeholder="Please provide furniture length" onChange={(e) => setLength(e.target.value)} />
-                                        {(invalidFields.length > 0 && invalidFields.includes('length')) && (
-                                            <div id="reqLength" className="form-text">Please provide lenght</div>
-                                        )}
-                                    </div>
+                        {/* {productType === "furniture" && ( */}
+                        <div className={`option-furniture ${productType === "furniture" ? "show" : "hide"}`}>
+                            <div className="mb-2 row">
+                                <label htmlFor="height" className="col-sm-4 col-form-label">Height (CM)</label>
+                                <div className="col-sm-8">
+                                    <input type="number" className="form-control" id="height" placeholder="Please provide furniture height" onChange={(e) => setHeight(e.target.value)} />
+                                    {(invalidFields.length > 0 && invalidFields.includes('height')) && (
+                                        <div id="reqHeight" className="form-text">Please provide height</div>
+                                    )}
                                 </div>
                             </div>
-                        )}
+                            <div className="mb-2 row">
+                                <label htmlFor="width" className="col-sm-4 col-form-label">Width (CM)</label>
+                                <div className="col-sm-8">
+                                    <input type="text" className="form-control" id="width" placeholder="Please provide furniture width" onChange={(e) => setWidth(e.target.value)} />
+                                    {(invalidFields.length > 0 && invalidFields.includes('width')) && (
+                                        <div id="reqWidth" className="form-text">Please provide width</div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="mb-2 row">
+                                <label htmlFor="length" className="col-sm-4 col-form-label">Length (CM)</label>
+                                <div className="col-sm-8">
+                                    <input type="number" className="form-control" id="length" placeholder="Please provide furniture length" onChange={(e) => setLength(e.target.value)} />
+                                    {(invalidFields.length > 0 && invalidFields.includes('length')) && (
+                                        <div id="reqLength" className="form-text">Please provide lenght</div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                        {/* )} */}
 
                     </form>
                 </div>
