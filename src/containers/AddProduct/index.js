@@ -56,13 +56,13 @@ const AddProduct = () => {
         }
         else {
 
-            if (productType === "book" && (weight === "" || weight === null))
+            if (productType === "Book" && (weight === "" || weight === null))
                 setInvalidFields(oldInvalidFields => [...oldInvalidFields, "weight"]);
 
-            if (productType === "dvd" && (size === "" || size === null))
+            if (productType === "DVD" && (size === "" || size === null))
                 setInvalidFields(oldInvalidFields => [...oldInvalidFields, "size"]);
 
-            if (productType === "furniture") {
+            if (productType === "Furniture") {
                 if (height === "" || height === null)
                     setInvalidFields(oldInvalidFields => [...oldInvalidFields, "height"]);
 
@@ -76,11 +76,11 @@ const AddProduct = () => {
 
         if (invalidFields.length === 0) {
             let productTypeValue = '';
-            if (productType === "book")
+            if (productType === "Book")
                 productTypeValue = weight;
-            else if (productType === "dvd")
+            else if (productType === "DVD")
                 productTypeValue = size;
-            else if (productType === "furniture")
+            else if (productType === "Furniture")
                 productTypeValue = height + "x" + width + "x" + length;
 
             axios.get(`${process.env.REACT_APP_API}/add?sku=${sku}&name=${name}&price=${price}&productType=${productType}&productTypeValue=${productTypeValue}`).then((response) => {
@@ -153,9 +153,9 @@ const AddProduct = () => {
                             <div className="col-sm-8">
                                 <select className="form-select" id="productType" onChange={handleSelectChange}>
                                     <option id="Default">Type Switcher</option>
-                                    <option id="Book" value="book">Book</option>
-                                    <option id="DVD" value="dvd">DVD</option>
-                                    <option id="Furniture" value="furniture">Furniture</option>
+                                    <option id="Book" value="Book">Book</option>
+                                    <option id="DVD" value="DVD">DVD</option>
+                                    <option id="Furniture" value="Furniture">Furniture</option>
                                 </select>
                                 {(invalidFields.length > 0 && invalidFields.includes('productType')) && (
                                     <div id="reqproductType" className="form-text">Please select product type</div>
@@ -163,8 +163,8 @@ const AddProduct = () => {
                             </div>
                         </div>
 
-                        {/* {productType === "book" && ( */}
-                        <div className={`option-book ${productType === "book" ? "show" : "hide"}`}>
+                        {/* {productType === "Book" && ( */}
+                        <div className={`option-book ${productType === "Book" ? "show" : "hide"}`}>
                             <div className="mb-2 row">
                                 <label htmlFor="weight" className="col-sm-4 col-form-label">Weight (KG)</label>
                                 <div className="col-sm-8">
@@ -178,8 +178,8 @@ const AddProduct = () => {
                         </div>
                         {/* )} */}
 
-                        {/* {productType === "dvd" && ( */}
-                        <div className={`option-dvd ${productType === "dvd" ? "show" : "hide"}`}>
+                        {/* {productType === "DVD" && ( */}
+                        <div className={`option-dvd ${productType === "DVD" ? "show" : "hide"}`}>
                             <div className="mb-2 row">
                                 <label htmlFor="size" className="col-sm-4 col-form-label">Size (MB)</label>
                                 <div className="col-sm-8">
@@ -193,8 +193,8 @@ const AddProduct = () => {
                         </div>
                         {/* )} */}
 
-                        {/* {productType === "furniture" && ( */}
-                        <div className={`option-furniture ${productType === "furniture" ? "show" : "hide"}`}>
+                        {/* {productType === "Furniture" && ( */}
+                        <div className={`option-furniture ${productType === "Furniture" ? "show" : "hide"}`}>
                             <div className="mb-2 row">
                                 <label htmlFor="height" className="col-sm-4 col-form-label">Height (CM)</label>
                                 <div className="col-sm-8">

@@ -10,3 +10,7 @@
 .show{
     display: block;
 }
+.clear-both{
+    display: block;
+    clear: both;
+}
