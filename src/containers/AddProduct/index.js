@@ -86,7 +86,7 @@ const AddProduct = () => {
             axios.get(`${process.env.REACT_APP_API}/add?sku=${sku}&name=${name}&price=${price}&productType=${productType}&productTypeValue=${productTypeValue}`).then((response) => {
                 if (response.data.success === "true") {
                     //console.log(response.data);
-                    navigate(-1);
+                    navigate('/');
                 }
             });
         }
@@ -118,7 +118,7 @@ const AddProduct = () => {
 
                     {/* <form id="product_form" action="/action_page.php" onSubmit={handleSubmit} method="post"> */}
                     <form id="product_form">
-                        <div className="mb-2 row">
+                        <div className="mb-3 row">
                             <label htmlFor="sku" className="col-sm-4 col-form-label">SKU</label>
                             <div className="col-sm-8">
                                 <input type="text" className="form-control" id="sku" placeholder="Please provide product SKU" onChange={(e) => setSKU(e.target.value)} />
@@ -128,7 +128,7 @@ const AddProduct = () => {
                             </div>
                         </div>
 
-                        <div className="mb-2 row">
+                        <div className="mb-3 row">
                             <label htmlFor="name" className="col-sm-4 col-form-label">Name</label>
                             <div className="col-sm-8">
                                 <input type="text" className="form-control" id="name" placeholder="Please provide product name" onChange={(e) => setName(e.target.value)} />
@@ -138,7 +138,7 @@ const AddProduct = () => {
                             </div>
                         </div>
 
-                        <div className="mb-2 row">
+                        <div className="mb-5 row">
                             <label htmlFor="price" className="col-sm-4 col-form-label">Price</label>
                             <div className="col-sm-8">
                                 <input type="number" className="form-control" id="price" placeholder="Please provide product price" onChange={(e) => setPrice(e.target.value)} />
@@ -148,7 +148,7 @@ const AddProduct = () => {
                             </div>
                         </div>
 
-                        <div className="mb-2 row">
+                        <div className="mb-3 row">
                             <label htmlFor="productType" className="col-sm-4 col-form-label">Type Switcher</label>
                             <div className="col-sm-8">
                                 <select className="form-select" id="productType" onChange={handleSelectChange}>
@@ -169,6 +169,7 @@ const AddProduct = () => {
                                 <label htmlFor="weight" className="col-sm-4 col-form-label">Weight (KG)</label>
                                 <div className="col-sm-8">
                                     <input type="number" className="form-control" id="weight" placeholder="Please provide book weight!" onChange={(e) => setWeight(e.target.value)} />
+                                    <label className="mt-2 text-black fs-6">Please provide weight in KG</label>
                                     {(invalidFields.length > 0 && invalidFields.includes('weight')) && (
                                         <div id="reqWeight" className="form-text">Please provide weight</div>
                                     )}
@@ -183,6 +184,7 @@ const AddProduct = () => {
                                 <label htmlFor="size" className="col-sm-4 col-form-label">Size (MB)</label>
                                 <div className="col-sm-8">
                                     <input type="number" className="form-control" id="size" placeholder="Please provide div size!" onChange={(e) => setSize(e.target.value)} />
+                                    <label className="mt-2 text-black fs-6">Please provide disk space in MB</label>
                                     {(invalidFields.length > 0 && invalidFields.includes('size')) && (
                                         <div id="reqSize" className="form-text">Please provide size</div>
                                     )}
@@ -218,6 +220,11 @@ const AddProduct = () => {
                                     {(invalidFields.length > 0 && invalidFields.includes('length')) && (
                                         <div id="reqLength" className="form-text">Please provide lenght</div>
                                     )}
+                                </div>
+                            </div>
+                            <div className="mb-2 row">
+                                <div className="offset-sm-4 col-sm-8">
+                                    <label className="mt-2 text-black">Please, provide dimensions</label>
                                 </div>
                             </div>
                         </div>

@@ -234,8 +234,8 @@ const ProductList = () => {
                   </div>
                   <div className="col-md-10">
                     <div className="card-body text-center">
-                      <p className="card-text mb-0">{sku}</p>
-                      <p className="card-text mb-0">{name}</p>
+                      <p className="card-text mb-1">{sku}</p>
+                      <label className="card-text mb-0">{name}</label>
                       <p className="card-text mb-0">{price} $</p>
                       <p className="card-text mb-0">{solveProductTypeValue(productType, productTypeValue)}</p>
                     </div>
