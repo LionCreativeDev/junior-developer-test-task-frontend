@@ -32,6 +32,47 @@ const AddProduct = () => {
             setProductType(event.target.value);
     }
 
+    const handleFailure = (message) => {
+        let errors = message.split("|");
+        console.log(errors);
+
+        errors.forEach(error => {
+            console.log(error);
+
+            if (error.includes('sku'))
+                setInvalidFields(oldInvalidFields => [...oldInvalidFields, "sku"]);
+
+            if (error.includes('name'))
+                setInvalidFields(oldInvalidFields => [...oldInvalidFields, "name"]);
+
+            if (error.includes('price'))
+                setInvalidFields(oldInvalidFields => [...oldInvalidFields, "price"]);
+
+            if (error.includes('productType')) {
+                setInvalidFields(oldInvalidFields => [...oldInvalidFields, "productType"]);
+            }
+            else {
+
+                if (productType === "Book" && error.includes('weight'))
+                    setInvalidFields(oldInvalidFields => [...oldInvalidFields, "weight"]);
+
+                if (productType === "DVD" && error.includes('size'))
+                    setInvalidFields(oldInvalidFields => [...oldInvalidFields, "size"]);
+
+                if (productType === "Furniture") {
+                    if (error.includes('height'))
+                        setInvalidFields(oldInvalidFields => [...oldInvalidFields, "height"]);
+
+                    if (error.includes('width'))
+                        setInvalidFields(oldInvalidFields => [...oldInvalidFields, "width"]);
+
+                    if (error.includes('length'))
+                        setInvalidFields(oldInvalidFields => [...oldInvalidFields, "length"]);
+                }
+            }
+        })
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setInvalidFields([]);
@@ -88,6 +129,9 @@ const AddProduct = () => {
                     //console.log(response.data);
                     navigate('/');
                 }
+                else {
+                    handleFailure(response.data.message);
+                }
             });
         }
     }
@@ -122,8 +166,11 @@ const AddProduct = () => {
                             <label htmlFor="sku" className="col-sm-4 col-form-label">SKU</label>
                             <div className="col-sm-8">
                                 <input type="text" className="form-control" id="sku" placeholder="Please provide product SKU" onChange={(e) => setSKU(e.target.value)} />
-                                {(invalidFields.length > 0 && invalidFields.includes('sku')) && (
+                                {(invalidFields.length > 0 && invalidFields.includes('sku') && sku.length === 0) && (
                                     <div id="reqSKU" className="form-text">Please provide sku</div>
+                                )}
+                                {(invalidFields.length > 0 && invalidFields.includes('sku') && sku.length > 0) && (
+                                    <div id="reqSKU" className="form-text">Product with this sku already exists</div>
                                 )}
                             </div>
                         </div>
@@ -142,8 +189,11 @@ const AddProduct = () => {
                             <label htmlFor="price" className="col-sm-4 col-form-label">Price</label>
                             <div className="col-sm-8">
                                 <input type="number" className="form-control" id="price" placeholder="Please provide product price" onChange={(e) => setPrice(e.target.value)} />
-                                {(invalidFields.length > 0 && invalidFields.includes('price')) && (
+                                {(invalidFields.length > 0 && invalidFields.includes('price') && price.length === 0) && (
                                     <div id="reqPrice" className="form-text">Please provide price</div>
+                                )}
+                                {(invalidFields.length > 0 && invalidFields.includes('price') && price.length > 0) && (
+                                    <div id="reqPrice" className="form-text">Please provide valid price</div>
                                 )}
                             </div>
                         </div>
@@ -170,8 +220,11 @@ const AddProduct = () => {
                                 <div className="col-sm-8">
                                     <input type="number" className="form-control" id="weight" placeholder="Please provide book weight!" onChange={(e) => setWeight(e.target.value)} />
                                     <label className="mt-2 text-black fs-6">Please provide weight in KG</label>
-                                    {(invalidFields.length > 0 && invalidFields.includes('weight')) && (
+                                    {(invalidFields.length > 0 && invalidFields.includes('weight') && weight.length === 0) && (
                                         <div id="reqWeight" className="form-text">Please provide weight</div>
+                                    )}
+                                    {(invalidFields.length > 0 && invalidFields.includes('weight') && weight.length > 0) && (
+                                        <div id="reqWeight" className="form-text">Please provide valid weight</div>
                                     )}
                                 </div>
                             </div>
@@ -184,10 +237,13 @@ const AddProduct = () => {
                                 <label htmlFor="size" className="col-sm-4 col-form-label">Size (MB)</label>
                                 <div className="col-sm-8">
                                     <input type="number" className="form-control" id="size" placeholder="Please provide div size!" onChange={(e) => setSize(e.target.value)} />
-                                    <label className="mt-2 text-black fs-6">Please provide disk space in MB</label>
-                                    {(invalidFields.length > 0 && invalidFields.includes('size')) && (
+                                    {(invalidFields.length > 0 && invalidFields.includes('size') && size.length === 0) && (
                                         <div id="reqSize" className="form-text">Please provide size</div>
                                     )}
+                                    {(invalidFields.length > 0 && invalidFields.includes('size') && size.length > 0) && (
+                                        <div id="reqSize" className="form-text">Please provide valid size</div>
+                                    )}
+                                    <label className="mt-2 text-black fs-6">Please provide disk space in MB</label>
                                 </div>
                             </div>
                         </div>
@@ -199,8 +255,11 @@ const AddProduct = () => {
                                 <label htmlFor="height" className="col-sm-4 col-form-label">Height (CM)</label>
                                 <div className="col-sm-8">
                                     <input type="number" className="form-control" id="height" placeholder="Please provide furniture height" onChange={(e) => setHeight(e.target.value)} />
-                                    {(invalidFields.length > 0 && invalidFields.includes('height')) && (
+                                    {(invalidFields.length > 0 && invalidFields.includes('height') && height.length === 0) && (
                                         <div id="reqHeight" className="form-text">Please provide height</div>
+                                    )}
+                                    {(invalidFields.length > 0 && invalidFields.includes('height') && height.length > 0) && (
+                                        <div id="reqHeight" className="form-text">Please provide valid height</div>
                                     )}
                                 </div>
                             </div>
@@ -208,8 +267,11 @@ const AddProduct = () => {
                                 <label htmlFor="width" className="col-sm-4 col-form-label">Width (CM)</label>
                                 <div className="col-sm-8">
                                     <input type="text" className="form-control" id="width" placeholder="Please provide furniture width" onChange={(e) => setWidth(e.target.value)} />
-                                    {(invalidFields.length > 0 && invalidFields.includes('width')) && (
+                                    {(invalidFields.length > 0 && invalidFields.includes('width') && width.length === 0) && (
                                         <div id="reqWidth" className="form-text">Please provide width</div>
+                                    )}
+                                    {(invalidFields.length > 0 && invalidFields.includes('width') && width.length > 0) && (
+                                        <div id="reqWidth" className="form-text">Please provide valid width</div>
                                     )}
                                 </div>
                             </div>
@@ -217,8 +279,11 @@ const AddProduct = () => {
                                 <label htmlFor="length" className="col-sm-4 col-form-label">Length (CM)</label>
                                 <div className="col-sm-8">
                                     <input type="number" className="form-control" id="length" placeholder="Please provide furniture length" onChange={(e) => setLength(e.target.value)} />
-                                    {(invalidFields.length > 0 && invalidFields.includes('length')) && (
+                                    {(invalidFields.length > 0 && invalidFields.includes('length') && length.length === 0) && (
                                         <div id="reqLength" className="form-text">Please provide lenght</div>
+                                    )}
+                                    {(invalidFields.length > 0 && invalidFields.includes('length') && length.length > 0) && (
+                                        <div id="reqLength" className="form-text">Please provide valid lenght</div>
                                     )}
                                 </div>
                             </div>
